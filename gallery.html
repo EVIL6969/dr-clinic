@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before &amp; After Smile Gallery | Real Patient Results — Lucerne Dental Atelier</title>
+<meta name="description" content="Browse real before-and-after results from Lucerne Dental Atelier patients — dental implants, porcelain veneers, and full smile makeovers. Drag each photo to compare.">
+
+<!-- ===================================================================
+     LOCAL SEO CUSTOMIZATION ZONE
+     Swap business name, NAP, and review counts to match the deployed
+     clinic. Breadcrumb schema below ties this page back to the
+     homepage's LocalBusiness entity for richer sitelinks.
+     =================================================================== -->
+<link rel="canonical" href="https://www.lucernedentalatelier.com/gallery.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Before &amp; After Smile Gallery — Lucerne Dental Atelier">
+<meta property="og:description" content="Real patients, real transformations. Drag to compare dental implant, veneer, and smile makeover results.">
+<meta property="og:image" content="https://picsum.photos/seed/lucerne-gallery-og-share/1200/630">
+<meta property="og:url" content="https://www.lucernedentalatelier.com/gallery.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.lucernedentalatelier.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Before & After Gallery", "item": "https://www.lucernedentalatelier.com/gallery.html" }
+  ]
+}
+</script>
+<!-- END LOCAL SEO CUSTOMIZATION ZONE -->
+
+<link rel="stylesheet" href="style.css">
+<style>
+/* -------------------------------------------------------------
+   PAGE-SPECIFIC: BEFORE & AFTER GALLERY
+   Built on top of the shared token system in style.css — every
+   color, font, radius, and spacing value below references the
+   same custom properties used sitewide.
+------------------------------------------------------------- */
+
+/* Persistent "current page" underline for the nav */
+.main-nav__links a[aria-current="page"] { color: var(--ink); }
+.main-nav__links a[aria-current="page"]::after { right: 0; }
+
+.page-hero { overflow: hidden; }
+.page-hero .section-head,
+.page-hero .container > div { max-width: 720px; }
+.page-hero h1 { color: var(--porcelain); font-size: var(--fs-h1); max-width: 16ch; }
+.page-hero p.hero__sub { color: rgba(238,238,231,0.78); }
+.page-hero .hero__trust-item .stat-number { color: var(--porcelain); }
+.page-hero .hero__trust-item span { color: rgba(238,238,231,0.65); }
+
+/* Filter tabs */
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: var(--space-xl);
+}
+.filter-tab {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.7em 1.4em;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--ink-line-strong);
+  background: var(--white);
+  color: var(--ink-soft);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.filter-tab:hover { border-color: var(--sage); color: var(--ink); }
+.filter-tab.is-active { background: var(--ink); color: var(--porcelain); border-color: var(--ink); }
+
+/* Case cards */
+.case-card {
+  background: var(--porcelain-flat);
+  border-radius: var(--radius-card);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: box-shadow 0.5s var(--ease-smile), transform 0.5s var(--ease-smile);
+}
+.case-card:hover { box-shadow: var(--shadow-soft); transform: translateY(-4px); }
+.case-card.is-hidden { display: none; }
+
+.case-card__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: var(--space-sm); }
+.case-card__meta { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.03em; color: var(--sage-deep); background: var(--sage-tint); padding: 0.35em 0.8em; border-radius: var(--radius-pill); display: inline-block; }
+
+.case-card h3 { font-size: 1.25rem; margin-bottom: var(--space-sm); }
+
+.case-card__quote { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--ink-soft); margin-bottom: var(--space-sm); }
+.case-card__quote-author { display: block; font-family: var(--font-body); font-style: normal; font-weight: 700; font-size: 0.84rem; color: var(--ink); margin-top: 0.5rem; }
+
+/* Before/After comparison slider */
+.compare {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  box-shadow: var(--shadow-card);
+  margin-top: auto;
+  touch-action: none;
+  user-select: none;
+  cursor: ew-resize;
+}
+.compare__after,
+.compare__before { position: absolute; inset: 0; overflow: hidden; }
+.compare__before { width: 50%; }
+.compare img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; }
+.compare__before img { width: 100%; height: 100%; }
+
+.compare__handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 0;
+  transform: translateX(-50%);
+}
+.compare__handle::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 50%;
+  width: 2px;
+  background: var(--white);
+  transform: translateX(-50%);
+}
+.compare__handle::after {
+  content: '⟷';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--shadow-card);
+}
+.compare__handle:focus-visible::after { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+.compare.is-dragging .compare__handle::after { background: var(--gold-tint); }
+
+.compare__tag {
+  position: absolute;
+  bottom: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: rgba(21,33,29,0.55);
+  padding: 0.4em 0.8em;
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+}
+.compare__tag--before { left: 0.9rem; }
+.compare__tag--after { right: 0.9rem; }
+
+/* Authenticity strip */
+.authenticity {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+}
+.authenticity p { margin-inline: auto; color: var(--ink-soft); }
+
+@media (max-width: 1024px) {
+  .page-hero h1 { max-width: none; }
+}
+@media (max-width: 768px) {
+  .filter-tabs { gap: 0.5rem; }
+  .filter-tab { font-size: 0.84rem; padding: 0.6em 1.1em; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============== ANNOUNCEMENT BAR ============== -->
+<div class="announce-bar">
+  New patients: complimentary digital smile preview with any consultation booked this month — <a href="index.html#assessment">take the 60-second assessment</a>
+</div>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+
+    <nav class="main-nav">
+      <ul class="main-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Before & After</a></li>
+        <li><a href="financing.html">Financing</a></li>
+        <li><a href="contact.html">Book Now</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      <a href="tel:+14245550199" class="header-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+        <span class="label-text">(424) 555-0199</span>
+      </a>
+      <a href="index.html#book" class="btn btn--primary">Book Consultation</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer__top">
+    <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+    <button class="nav-toggle" aria-label="Close menu" id="navClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="index.html#top">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="financing.html">Financing</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="index.html#contact">Visit Us</a>
+  </nav>
+  <div class="mobile-drawer__footer">
+    <a href="tel:+14245550199" class="btn btn--outline btn--block">Call (424) 555-0199</a>
+    <a href="index.html#book" class="btn btn--primary btn--block">Book Consultation</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ============== PAGE HERO ============== -->
+  <section class="section page-hero section--ink smile-cut">
+    <div class="container">
+      <div>
+        <span class="eyebrow on-dark">Real patients, real results</span>
+        <h1>Before you commit to anything, see what's actually possible.</h1>
+        <p class="hero__sub">Every case below is a real Lucerne Dental Atelier patient, photographed with written consent. Drag any photo to compare — then bring the cases that resonate with you into your own consultation.</p>
+
+        <div class="hero__actions">
+          <a href="index.html#book" class="btn btn--gold btn--lg">Book a Private Consultation</a>
+          <a href="index.html#assessment" class="btn btn--outline on-dark btn--lg">Take the Smile Assessment</a>
+        </div>
+
+        <div class="hero__trust">
+          <div class="hero__trust-item">
+            <span class="stat-number">1,200+</span>
+            <span>Transformations documented</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="hero__stars">★★★★★</span>
+            <span class="stat-number" style="font-size:1.05rem;">4.9 / 1,860 reviews</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="stat-number">98%</span>
+            <span>Of patients refer a friend or family member</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FILTERABLE CASE GRID ============== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Browse by treatment</span>
+        <h2>Six smiles, six different starting points.</h2>
+        <p class="wide">Filter by whatever brought you here, or browse everything. Each slider shows the same patient, same lighting, same angle — only the work is different.</p>
+      </div>
+
+      <div class="filter-tabs" role="tablist" aria-label="Filter case studies by treatment">
+        <button class="filter-tab is-active" type="button" role="tab" aria-selected="true" data-filter="all">All Transformations</button>
+        <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="implants">Dental Implants</button>
+        <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="veneers">Porcelain Veneers</button>
+        <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="makeovers">Smile Makeovers</button>
+      </div>
+
+      <div class="grid grid-2">
+
+        <!-- CASE 1 — Implants -->
+        <article class="case-card reveal" data-category="implants">
+          <div class="case-card__top">
+            <h3>Full-Arch Implant Rebuild</h3>
+          </div>
+          <span class="case-card__meta">Dental Implants · 4 appointments over 5 months</span>
+          <p class="case-card__quote" style="margin-top: var(--space-sm);">"I stopped covering my mouth in photos almost the day the temporaries went in. The final teeth don't even feel foreign anymore — they just feel like mine."
+            <span class="case-card__quote-author">Robert M., 58</span>
+          </p>
+          <div class="compare" data-pos="50">
+            <div class="compare__after"><img src="https://picsum.photos/seed/lucerne-gallery-implants1-after/700/525" alt="After: full-arch dental implant restoration with natural-looking, evenly aligned teeth" draggable="false"></div>
+            <div class="compare__before"><img src="https://picsum.photos/seed/lucerne-gallery-implants1-before/700/525" alt="Before: missing and worn molars prior to full-arch implant treatment" draggable="false"></div>
+            <div class="compare__handle" role="slider" tabindex="0" aria-label="Drag to compare before and after photos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+            <span class="compare__tag compare__tag--before">Before</span>
+            <span class="compare__tag compare__tag--after">After</span>
+          </div>
+        </article>
+
+        <!-- CASE 2 — Veneers -->
+        <article class="case-card reveal" data-category="veneers">
+          <div class="case-card__top">
+            <h3>8-Veneer Smile Design</h3>
+          </div>
+          <span class="case-card__meta">Porcelain Veneers · 3 appointments over 3 weeks</span>
+          <p class="case-card__quote" style="margin-top: var(--space-sm);">"I'd been self-conscious about a gap since middle school. Seeing the digital mockup before we started made the whole decision easy."
+            <span class="case-card__quote-author">Elena R., 34</span>
+          </p>
+          <div class="compare" data-pos="50">
+            <div class="compare__after"><img src="https://picsum.photos/seed/lucerne-gallery-veneers1-after/700/525" alt="After: eight porcelain veneers creating an even, gap-free smile" draggable="false"></div>
+            <div class="compare__before"><img src="https://picsum.photos/seed/lucerne-gallery-veneers1-before/700/525" alt="Before: gap and discoloration prior to porcelain veneer treatment" draggable="false"></div>
+            <div class="compare__handle" role="slider" tabindex="0" aria-label="Drag to compare before and after photos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+            <span class="compare__tag compare__tag--before">Before</span>
+            <span class="compare__tag compare__tag--after">After</span>
+          </div>
+        </article>
+
+        <!-- CASE 3 — Smile Makeover -->
+        <article class="case-card reveal" data-category="makeovers">
+          <div class="case-card__top">
+            <h3>Complete Makeover Before a 20-Year Reunion</h3>
+          </div>
+          <span class="case-card__meta">Whitening, Veneers &amp; Contouring · 6 weeks total</span>
+          <p class="case-card__quote" style="margin-top: var(--space-sm);">"I told my coordinator I wanted to walk in looking like myself, just rested. That's exactly what I got."
+            <span class="case-card__quote-author">James K., 45</span>
+          </p>
+          <div class="compare" data-pos="50">
+            <div class="compare__after"><img src="https://picsum.photos/seed/lucerne-gallery-makeover1-after/700/525" alt="After: full smile makeover combining whitening, veneers, and gum contouring" draggable="false"></div>
+            <div class="compare__before"><img src="https://picsum.photos/seed/lucerne-gallery-makeover1-before/700/525" alt="Before: discolored and unevenly shaped teeth prior to smile makeover" draggable="false"></div>
+            <div class="compare__handle" role="slider" tabindex="0" aria-label="Drag to compare before and after photos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+            <span class="compare__tag compare__tag--before">Before</span>
+            <span class="compare__tag compare__tag--after">After</span>
+          </div>
+        </article>
+
+        <!-- CASE 4 — Implants -->
+        <article class="case-card reveal" data-category="implants">
+          <div class="case-card__top">
+            <h3>Single-Tooth Implant After a Sports Injury</h3>
+          </div>
+          <span class="case-card__meta">Dental Implant · 2 appointments over 4 months (incl. healing time)</span>
+          <p class="case-card__quote" style="margin-top: var(--space-sm);">"A baseball took out my front tooth at 27. Nobody at my wedding six months later could tell which one was fake."
+            <span class="case-card__quote-author">Priya S., 27</span>
+          </p>
+          <div class="compare" data-pos="50">
+            <div class="compare__after"><img src="https://picsum.photos/seed/lucerne-gallery-implants2-after/700/525" alt="After: single-tooth implant matching the surrounding natural teeth" draggable="false"></div>
+            <div class="compare__before"><img src="https://picsum.photos/seed/lucerne-gallery-implants2-before/700/525" alt="Before: missing front tooth following a sports injury" draggable="false"></div>
+            <div class="compare__handle" role="slider" tabindex="0" aria-label="Drag to compare before and after photos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+            <span class="compare__tag compare__tag--before">Before</span>
+            <span class="compare__tag compare__tag--after">After</span>
+          </div>
+        </article>
+
+        <!-- CASE 5 — Veneers -->
+        <article class="case-card reveal" data-category="veneers">
+          <div class="case-card__top">
+            <h3>Chip Repair &amp; Symmetry Correction</h3>
+          </div>
+          <span class="case-card__meta">4 Porcelain Veneers · 2 appointments over 10 days</span>
+          <p class="case-card__quote" style="margin-top: var(--space-sm);">"It wasn't even a full smile makeover — just enough to stop noticing the chip every time I saw a photo of myself."
+            <span class="case-card__quote-author">Carlos D., 41</span>
+          </p>
+          <div class="compare" data-pos="50">
+            <div class="compare__after"><img src="https://picsum.photos/seed/lucerne-gallery-veneers2-after/700/525" alt="After: chip repaired and smile symmetry corrected with porcelain veneers" draggable="false"></div>
+            <div class="compare__before"><img src="https://picsum.photos/seed/lucerne-gallery-veneers2-before/700/525" alt="Before: chipped front tooth and uneven smile line" draggable="false"></div>
+            <div class="compare__handle" role="slider" tabindex="0" aria-label="Drag to compare before and after photos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+            <span class="compare__tag compare__tag--before">Before</span>
+            <span class="compare__tag compare__tag--after">After</span>
+          </div>
+        </article>
+
+        <!-- CASE 6 — Smile Makeover -->
+        <article class="case-card reveal" data-category="makeovers">
+          <div class="case-card__top">
+            <h3>Pre-Wedding Smile Transformation</h3>
+          </div>
+          <span class="case-card__meta">Whitening, Veneers &amp; Gum Contouring · 8 weeks total</span>
+          <p class="case-card__quote" style="margin-top: var(--space-sm);">"My dress fitting was nerve-wracking enough. My smile wasn't something I wanted to worry about too."
+            <span class="case-card__quote-author">Sophia L., 29</span>
+          </p>
+          <div class="compare" data-pos="50">
+            <div class="compare__after"><img src="https://picsum.photos/seed/lucerne-gallery-makeover2-after/700/525" alt="After: bridal smile transformation with whitening and veneers" draggable="false"></div>
+            <div class="compare__before"><img src="https://picsum.photos/seed/lucerne-gallery-makeover2-before/700/525" alt="Before: dull shade and uneven gum line prior to bridal smile transformation" draggable="false"></div>
+            <div class="compare__handle" role="slider" tabindex="0" aria-label="Drag to compare before and after photos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+            <span class="compare__tag compare__tag--before">Before</span>
+            <span class="compare__tag compare__tag--after">After</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== AUTHENTICITY STRIP ============== -->
+  <section class="section--tight section section--flat">
+    <div class="container authenticity">
+      <span class="eyebrow" style="justify-content:center;">A note on these photos</span>
+      <p class="wide" style="margin-top: var(--space-sm);">Every photo in this gallery is unretouched and published with the patient's written consent. Individual results vary based on each person's anatomy, oral health, and treatment plan — which is exactly why your consultation includes an honest conversation about what's realistic for you.</p>
+    </div>
+  </section>
+
+  <!-- ============== CLOSING CTA ============== -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <svg class="cta-banner__arc" viewBox="0 0 600 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0,4 Q300,68 600,4" stroke-width="2"/></svg>
+        <h2>Curious what your own before-and-after could look like?</h2>
+        <p>Bring any of these cases to your consultation — we'll tell you honestly whether it's realistic for your smile, timeline, and budget.</p>
+        <div class="cta-banner__actions">
+          <a href="index.html#book" class="btn btn--gold btn--lg">Book a Private Consultation</a>
+          <a href="tel:+14245550199" class="btn btn--outline on-dark btn--lg">Call (424) 555-0199</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+        <p>Cosmetic and implant dentistry built around precision, comfort, and a patient experience that finally feels human.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-2a4 4 0 0 0-4 4v2H9v4h2v8h4v-8h2.5l.5-4H15V8Z"/></svg></a>
+          <a href="#" aria-label="Google Reviews"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 12h8.4a8 8 0 1 1-2.5-6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Before &amp; After Gallery</a></li>
+          <li><a href="index.html#services">Smile Design</a></li>
+          <li><a href="index.html#technology">Technology</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#services">Dental Implants</a></li>
+          <li><a href="index.html#services">Porcelain Veneers</a></li>
+          <li><a href="index.html#services">Smile Makeovers</a></li>
+          <li><a href="financing.html">Financing &amp; Insurance</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <address>
+          <div>412 Camden Drive, Suite 310<br>Beverly Hills, CA 90210</div>
+          <div><a href="tel:+14245550199">(424) 555-0199</a></div>
+          <div><a href="mailto:hello@lucernedentalatelier.com">hello@lucernedentalatelier.com</a></div>
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Lucerne Dental Atelier. All rights reserved.</span>
+      <div class="flex gap-sm">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Notice of Privacy Practices</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== STICKY EMERGENCY CARE ELEMENT ============== -->
+<a href="tel:+14245550199" class="emergency-bar" aria-label="Call now for dental emergency care">
+  <span class="emergency-bar__pulse"></span>
+  <span>
+    Dental Emergency? We See You Today
+    <span class="emergency-bar__sub">(424) 555-0199</span>
+  </span>
+</a>
+
+<script>
+  // ---------- Mobile nav drawer ----------
+  const navToggle = document.getElementById('navToggle');
+  const navClose = document.getElementById('navClose');
+  const drawer = document.getElementById('mobileDrawer');
+  const openDrawer = () => { drawer.classList.add('is-open'); navToggle.setAttribute('aria-expanded','true'); };
+  const closeDrawer = () => { drawer.classList.remove('is-open'); navToggle.setAttribute('aria-expanded','false'); };
+  navToggle?.addEventListener('click', openDrawer);
+  navClose?.addEventListener('click', closeDrawer);
+  drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  // ---------- Scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ---------- Before/After comparison sliders ----------
+  function initCompare(el) {
+    const before = el.querySelector('.compare__before');
+    const handle = el.querySelector('.compare__handle');
+    let pos = Number(el.dataset.pos) || 50;
+
+    function setPos(p) {
+      pos = Math.min(100, Math.max(0, p));
+      before.style.width = pos + '%';
+      handle.style.left = pos + '%';
+      handle.setAttribute('aria-valuenow', String(Math.round(pos)));
+    }
+    function posFromClientX(clientX) {
+      const rect = el.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+
+    setPos(pos);
+
+    let dragging = false;
+    function start(e) { dragging = true; el.classList.add('is-dragging'); move(e); }
+    function move(e) {
+      if (!dragging) return;
+      setPos(posFromClientX(e.clientX));
+    }
+    function end() { dragging = false; el.classList.remove('is-dragging'); }
+
+    el.addEventListener('pointerdown', start);
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', end);
+
+    handle.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { setPos(pos - 5); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { setPos(pos + 5); e.preventDefault(); }
+      if (e.key === 'Home') { setPos(0); e.preventDefault(); }
+      if (e.key === 'End') { setPos(100); e.preventDefault(); }
+    });
+  }
+  document.querySelectorAll('.compare').forEach(initCompare);
+
+  // ---------- Case filter tabs ----------
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const caseCards = document.querySelectorAll('.case-card');
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected','true');
+      const filter = tab.dataset.filter;
+      caseCards.forEach(card => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('is-hidden', !match);
+      });
+    });
+  });
+</script>
+</body>
+</html>

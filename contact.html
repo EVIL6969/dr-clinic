@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &amp; Book a Consultation | Lucerne Dental Atelier — Beverly Hills, CA</title>
+<meta name="description" content="Book a consultation at Lucerne Dental Atelier in Beverly Hills, CA. Request an appointment online, call, or visit us — plus same-day emergency care and clear directions.">
+
+<!-- ===================================================================
+     LOCAL SEO CUSTOMIZATION ZONE
+     Swap business name, NAP, geo-coordinates, and review counts to
+     match the deployed clinic. The map embed URL below uses a plain
+     address query (no API key required) as a reliable fallback if
+     the Google Maps JavaScript API isn't provisioned for this client.
+     =================================================================== -->
+<link rel="canonical" href="https://www.lucernedentalatelier.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact &amp; Book a Consultation — Lucerne Dental Atelier">
+<meta property="og:description" content="Request an appointment online, call our office, or stop by — including same-day emergency care.">
+<meta property="og:image" content="https://picsum.photos/seed/lucerne-contact-og-share/1200/630">
+<meta property="og:url" content="https://www.lucernedentalatelier.com/contact.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.lucernedentalatelier.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact & Book", "item": "https://www.lucernedentalatelier.com/contact.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need a referral to book a consultation?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No referral is needed. You can request a consultation directly online or by phone, whether you're a new or returning patient." }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I bring to my first visit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bring a photo ID, your insurance card if applicable, and a list of any current medications. If you have recent X-rays from another provider, feel free to bring those too." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you treat dental emergencies the same day?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Call our office directly and we'll do everything possible to see you the same day for urgent issues like severe pain, swelling, or a broken tooth." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- END LOCAL SEO CUSTOMIZATION ZONE -->
+
+<link rel="stylesheet" href="style.css">
+<style>
+/* -------------------------------------------------------------
+   PAGE-SPECIFIC: CONTACT & FRICTIONLESS BOOKING
+   Built on top of the shared token system in style.css — every
+   color, font, radius, and spacing value below references the
+   same custom properties used sitewide.
+------------------------------------------------------------- */
+
+.main-nav__links a[aria-current="page"] { color: var(--ink); }
+.main-nav__links a[aria-current="page"]::after { right: 0; }
+
+.page-hero h1 { color: var(--porcelain); font-size: var(--fs-h1); max-width: 19ch; }
+.page-hero p.hero__sub { color: rgba(238,238,231,0.78); }
+.page-hero .hero__trust-item .stat-number { color: var(--porcelain); }
+.page-hero .hero__trust-item span { color: rgba(238,238,231,0.65); }
+
+/* Contact method cards */
+.contact-card {
+  background: var(--porcelain-flat);
+  border-radius: var(--radius-card);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-card);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s var(--ease-smile), box-shadow 0.4s var(--ease-smile);
+}
+.contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); }
+.contact-card__icon {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--sage-tint);
+  color: var(--sage-deep);
+  margin-bottom: var(--space-sm);
+}
+.contact-card--urgent { background: var(--ink); }
+.contact-card--urgent .contact-card__icon { background: rgba(194,97,74,0.18); color: var(--clay); }
+.contact-card--urgent h3, .contact-card--urgent p { color: var(--porcelain); }
+.contact-card--urgent p { opacity: 0.78; }
+.contact-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.contact-card p { font-size: 0.92rem; flex-grow: 1; margin-bottom: var(--space-sm); }
+
+/* Booking quiz copy column reuses assessment__wrap / quiz from style.css */
+.assessment__wrap.booking-wrap { align-items: start; }
+
+/* Allow a textarea inside the shared .quiz__field component */
+.quiz__field textarea {
+  width: 100%;
+  padding: 0.9em 1.1em;
+  border: 1.5px solid var(--ink-line-strong);
+  border-radius: 12px;
+  background: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 90px;
+}
+.quiz__field textarea:focus { border-color: var(--gold); outline: none; }
+.quiz__field--optional label span { font-weight: 400; color: var(--ink-soft); font-size: 0.8rem; }
+
+/* Map & visit-us section */
+.visit-row {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 1rem + 4vw, 5rem);
+  align-items: start;
+}
+.hours-list { margin-top: var(--space-md); display: flex; flex-direction: column; gap: 0; }
+.hours-list__row { display: flex; justify-content: space-between; padding-block: 0.6rem; border-bottom: 1px solid var(--ink-line); font-size: 0.95rem; }
+.hours-list__row:last-child { border-bottom: none; }
+.hours-list__row dt { color: var(--ink-soft); }
+.hours-list__row dd { font-family: var(--font-mono); color: var(--ink); margin: 0; }
+
+.map-frame {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  aspect-ratio: 4/3;
+  background: var(--porcelain-deep);
+}
+.map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+.access-note {
+  display: flex;
+  gap: 0.8em;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-top: var(--space-md);
+  padding: 1rem 1.2rem;
+  background: var(--sage-tint);
+  border-radius: 14px;
+}
+.access-note svg { flex-shrink: 0; margin-top: 2px; color: var(--sage-deep); }
+
+/* FAQ accordion */
+.faq-list { display: flex; flex-direction: column; gap: 0.9rem; max-width: 800px; }
+.faq-item { background: var(--porcelain-flat); border-radius: 16px; padding-inline: var(--space-md); box-shadow: var(--shadow-card); }
+.faq-item summary { cursor: pointer; list-style: none; padding-block: 1.2rem; font-weight: 700; font-size: 1rem; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; flex-shrink: 0; font-family: var(--font-mono); font-size: 1.4rem; line-height: 1; color: var(--gold-deep); transition: transform 0.3s var(--ease-smile); }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { padding-bottom: 1.2rem; margin: 0; color: var(--ink-soft); font-size: 0.96rem; }
+
+@media (max-width: 1024px) {
+  .visit-row { grid-template-columns: 1fr; }
+  .map-frame { max-width: 560px; }
+}
+@media (max-width: 768px) {
+  .page-hero h1 { max-width: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============== ANNOUNCEMENT BAR ============== -->
+<div class="announce-bar">
+  New patients: complimentary digital smile preview with any consultation booked this month — <a href="index.html#assessment">take the 60-second assessment</a>
+</div>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+
+    <nav class="main-nav">
+      <ul class="main-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Before & After</a></li>
+        <li><a href="financing.html">Financing</a></li>
+        <li><a href="contact.html" aria-current="page">Book Now</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      <a href="tel:+14245550199" class="header-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+        <span class="label-text">(424) 555-0199</span>
+      </a>
+      <a href="#book" class="btn btn--primary">Book Consultation</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer__top">
+    <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+    <button class="nav-toggle" aria-label="Close menu" id="navClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Before & After</a>
+    <a href="financing.html">Financing</a>
+    <a href="contact.html">Book Now</a>
+  </nav>
+  <div class="mobile-drawer__footer">
+    <a href="tel:+14245550199" class="btn btn--outline btn--block">Call (424) 555-0199</a>
+    <a href="#book" class="btn btn--primary btn--block">Book Consultation</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ============== PAGE HERO ============== -->
+  <section class="section page-hero section--ink smile-cut">
+    <div class="container">
+      <div>
+        <span class="eyebrow on-dark">Let's get you on the schedule</span>
+        <h1>Booking your consultation is the one easy part of getting a new smile.</h1>
+        <p class="hero__sub">Fill out the request below, call us directly, or stop by — every request is reviewed personally by our team and synced straight into our scheduling system the moment you submit it.</p>
+
+        <div class="hero__actions">
+          <a href="#book" class="btn btn--gold btn--lg">Start Booking Below</a>
+          <a href="tel:+14245550199" class="btn btn--outline on-dark btn--lg">Call (424) 555-0199</a>
+        </div>
+
+        <div class="hero__trust">
+          <div class="hero__trust-item">
+            <span class="stat-number">&lt;24 hrs</span>
+            <span>Response time on every request</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="stat-number">Same-day</span>
+            <span>Emergency slots typically available</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="stat-number">$0</span>
+            <span>Obligation for your first consultation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CONTACT METHODS ============== -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="grid grid-4">
+        <div class="contact-card reveal">
+          <div class="contact-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+          </div>
+          <h3>Call Us</h3>
+          <p>Speak directly with our front desk for same-day questions or to book over the phone.</p>
+          <a href="tel:+14245550199" class="service-card__link">(424) 555-0199
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="contact-card reveal">
+          <div class="contact-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+          </div>
+          <h3>Text Us</h3>
+          <p>Prefer typing to talking? Send us a text and our team will reply during business hours.</p>
+          <a href="sms:+14245550199" class="service-card__link">Send a Text
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="contact-card reveal">
+          <div class="contact-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </div>
+          <h3>Email Us</h3>
+          <p>For detailed questions or sending over insurance information ahead of your visit.</p>
+          <a href="mailto:hello@lucernedentalatelier.com" class="service-card__link">hello@lucernedentalatelier.com
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="contact-card contact-card--urgent reveal">
+          <div class="contact-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 9v4M12 17h.01M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.7 3.86a2 2 0 0 0-3.4 0Z"/></svg>
+          </div>
+          <h3>Dental Emergency?</h3>
+          <p>Severe pain, swelling, or a broken tooth? Call now — we hold same-day slots for emergencies.</p>
+          <a href="tel:+14245550199" class="service-card__link" style="color:var(--gold);">Call Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MULTI-STEP BOOKING FORM ============== -->
+  <section class="section assessment section--deep" id="book">
+    <div class="container assessment__wrap booking-wrap">
+      <div class="assessment__copy">
+        <span class="eyebrow">Request an appointment</span>
+        <h2>Tell us a little about what you need — we'll handle the rest.</h2>
+        <p class="wide">No account, no payment, and no obligation. Four quick steps and a member of our team takes it from there.</p>
+        <ul>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+            Reviewed personally by our scheduling coordinator, often the same day
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+            Synced directly into our practice management system the moment you submit
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+            No spam calls and no third-party data sharing, ever
+          </li>
+        </ul>
+      </div>
+
+      <div class="quiz" id="bookingQuiz">
+        <div class="quiz__progress">
+          <div class="quiz__progress-track"><div class="quiz__progress-fill" id="bookProgressFill"></div></div>
+          <span class="quiz__progress-label" id="bookProgressLabel">Step 1 of 4</span>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="quiz__step is-active" data-step="1">
+          <h3>What would you like to schedule?</h3>
+          <p>Choose the option closest to what brings you in.</p>
+          <div class="quiz__options" data-group="reason">
+            <button class="quiz__option" type="button">Dental Implant Consultation</button>
+            <button class="quiz__option" type="button">Veneer / Smile Design Consultation</button>
+            <button class="quiz__option" type="button">Complete Smile Makeover Consultation</button>
+            <button class="quiz__option" type="button">General Checkup or Other</button>
+          </div>
+          <div class="quiz__nav">
+            <button class="quiz__back" type="button" disabled>Back</button>
+            <button class="btn btn--primary quiz-next" type="button" data-next="2" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="quiz__step" data-step="2">
+          <h3>What's your ideal timeline?</h3>
+          <p>We'll prioritize your scheduling request accordingly.</p>
+          <div class="quiz__options" data-group="timeline">
+            <button class="quiz__option" type="button">As soon as possible</button>
+            <button class="quiz__option" type="button">Within the next 1–3 months</button>
+            <button class="quiz__option" type="button">Planning ahead, no rush</button>
+            <button class="quiz__option" type="button">Just gathering information for now</button>
+          </div>
+          <div class="quiz__nav">
+            <button class="quiz__back" type="button" data-back="1">Back</button>
+            <button class="btn btn--primary quiz-next" type="button" data-next="3" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="quiz__step" data-step="3">
+          <h3>Best time of day to reach you?</h3>
+          <p>So our coordinator calls or texts at a convenient moment.</p>
+          <div class="quiz__options" data-group="bestTime">
+            <button class="quiz__option" type="button">Weekday mornings</button>
+            <button class="quiz__option" type="button">Weekday afternoons</button>
+            <button class="quiz__option" type="button">Weekday evenings</button>
+            <button class="quiz__option" type="button">Saturdays</button>
+          </div>
+          <div class="quiz__nav">
+            <button class="quiz__back" type="button" data-back="2">Back</button>
+            <button class="btn btn--primary quiz-next" type="button" data-next="4" disabled>Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: CONTACT -->
+        <div class="quiz__step" data-step="4">
+          <h3>Where should we send your confirmation?</h3>
+          <p>A member of our team reviews every request personally — no auto-dialers.</p>
+          <div class="quiz__field">
+            <label for="bName">Full name</label>
+            <input type="text" id="bName" placeholder="Jordan Avery">
+          </div>
+          <div class="quiz__field">
+            <label for="bPhone">Mobile number</label>
+            <input type="tel" id="bPhone" placeholder="(424) 555-0199">
+          </div>
+          <div class="quiz__field">
+            <label for="bEmail">Email address</label>
+            <input type="email" id="bEmail" placeholder="jordan@email.com">
+          </div>
+          <div class="quiz__field quiz__field--optional">
+            <label for="bNote">Anything we should know? <span>(optional)</span></label>
+            <textarea id="bNote" placeholder="E.g. I'm nervous about dental visits, or I have a specific tooth that's bothering me."></textarea>
+          </div>
+          <div class="quiz__nav">
+            <button class="quiz__back" type="button" data-back="3">Back</button>
+            <button class="btn btn--primary" type="button" id="bookSubmit">Request My Appointment</button>
+          </div>
+        </div>
+
+        <!-- RESULT -->
+        <div class="quiz__step" data-step="result">
+          <div class="quiz__result">
+            <div class="quiz__result-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+            </div>
+            <h3>You're on the schedule — almost.</h3>
+            <p style="margin:0 auto 1.5rem;max-width:42ch;">Your request has already been logged in our scheduling system. A member of our team personally reviews every request and will reach out within one business day — often the same day — to confirm your appointment time.</p>
+            <a href="tel:+14245550199" class="btn btn--primary btn--block">Or Call Us Now: (424) 555-0199</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== VISIT US & MAP ============== -->
+  <section class="section">
+    <div class="container">
+      <div class="visit-row">
+        <div>
+          <span class="eyebrow">Find us</span>
+          <h2 style="margin-bottom: var(--space-md);">412 Camden Drive, easy to find, easier to park at.</h2>
+          <p class="wide">We're located in the heart of Beverly Hills' Golden Triangle, on the third floor with a private, calming waiting area — not a crowded clinic lobby.</p>
+
+          <dl class="hours-list">
+            <div class="hours-list__row"><dt>Monday – Thursday</dt><dd>8:00 AM – 6:00 PM</dd></div>
+            <div class="hours-list__row"><dt>Friday</dt><dd>8:00 AM – 3:00 PM</dd></div>
+            <div class="hours-list__row"><dt>Saturday</dt><dd>9:00 AM – 1:00 PM</dd></div>
+            <div class="hours-list__row"><dt>Sunday</dt><dd>Closed — emergencies by phone</dd></div>
+          </dl>
+
+          <div class="access-note">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="8" cy="19" r="1.6"/><circle cx="16" cy="19" r="1.6"/><path d="M2 11h20"/></svg>
+            <span>Complimentary valet parking is validated for every appointment. Enter through the Camden Drive lobby and take the elevator to Suite 310.</span>
+          </div>
+
+          <div class="hero__actions" style="margin-top: var(--space-lg);">
+            <a href="https://www.google.com/maps?q=412+Camden+Drive+Suite+310+Beverly+Hills+CA+90210" class="btn btn--outline btn--lg" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+        </div>
+
+        <div class="map-frame reveal">
+          <iframe
+            src="https://www.google.com/maps?q=412+Camden+Drive+Suite+310+Beverly+Hills+CA+90210&output=embed"
+            title="Map showing Lucerne Dental Atelier location at 412 Camden Drive, Suite 310, Beverly Hills, CA 90210"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== INTEGRATIONS STRIP (clinic-owner pitch hook) ============== -->
+  <section class="integrations">
+    <div class="container">
+      <div class="integrations__head">
+        <span class="eyebrow">Behind the scenes</span>
+        <p>The moment you submit a request above, it's already on our calendar — synced directly into the practice management software below, with zero manual re-entry.</p>
+      </div>
+      <div class="integrations__row">
+        <span class="integration-badge">Dentrix</span>
+        <span class="integration-badge">Open Dental</span>
+        <span class="integration-badge">Zocdoc</span>
+        <span class="integration-badge">Curve Dental</span>
+        <span class="integration-badge">Weave</span>
+        <span class="integration-badge">Google Business Profile</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== BOOKING FAQ ============== -->
+  <section class="section section--flat">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Before you book</span>
+        <h2>A few quick answers to common questions.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Do I need a referral to book a consultation?</summary>
+          <p>No referral is needed. You can request a consultation directly through the form above or by phone, whether you're a brand-new patient or returning after time away.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What should I bring to my first visit?</summary>
+          <p>A photo ID, your insurance card if you have one, and a list of any current medications. If you have recent X-rays from another provider, feel free to bring or email those ahead of time.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What if I need to reschedule or cancel?</summary>
+          <p>Just call or text our office at least 24 hours ahead and we'll find a new time that works — no penalty for advance notice. Same-day cancellations may be asked to reschedule for the next available slot.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you treat dental emergencies the same day?</summary>
+          <p>Yes. Call our office directly for severe pain, swelling, a broken tooth, or a lost crown — we hold same-day slots specifically for urgent cases.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Will you verify my insurance before I arrive?</summary>
+          <p>Yes — once you submit the form above with your insurance details (or call ahead), our team verifies your benefits in advance so you know your estimated coverage before your visit, not after.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CLOSING CTA ============== -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <svg class="cta-banner__arc" viewBox="0 0 600 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0,4 Q300,68 600,4" stroke-width="2"/></svg>
+        <h2>Your new smile starts with one ten-minute conversation.</h2>
+        <p>No pressure, no obligation — just an honest look at what's possible for you.</p>
+        <div class="cta-banner__actions">
+          <a href="#book" class="btn btn--gold btn--lg">Request an Appointment</a>
+          <a href="tel:+14245550199" class="btn btn--outline on-dark btn--lg">Call (424) 555-0199</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+        <p>Cosmetic and implant dentistry built around precision, comfort, and a patient experience that finally feels human.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-2a4 4 0 0 0-4 4v2H9v4h2v8h4v-8h2.5l.5-4H15V8Z"/></svg></a>
+          <a href="#" aria-label="Google Reviews"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 12h8.4a8 8 0 1 1-2.5-6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Before &amp; After Gallery</a></li>
+          <li><a href="services.html#implants">Dental Implants</a></li>
+          <li><a href="services.html#veneers">Porcelain Veneers</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#implants">Dental Implants</a></li>
+          <li><a href="services.html#veneers">Porcelain Veneers</a></li>
+          <li><a href="index.html#services">Smile Makeovers</a></li>
+          <li><a href="financing.html">Financing &amp; Insurance</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <address>
+          <div>412 Camden Drive, Suite 310<br>Beverly Hills, CA 90210</div>
+          <div><a href="tel:+14245550199">(424) 555-0199</a></div>
+          <div><a href="mailto:hello@lucernedentalatelier.com">hello@lucernedentalatelier.com</a></div>
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Lucerne Dental Atelier. All rights reserved.</span>
+      <div class="flex gap-sm">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Notice of Privacy Practices</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== STICKY EMERGENCY CARE ELEMENT ============== -->
+<a href="tel:+14245550199" class="emergency-bar" aria-label="Call now for dental emergency care">
+  <span class="emergency-bar__pulse"></span>
+  <span>
+    Dental Emergency? We See You Today
+    <span class="emergency-bar__sub">(424) 555-0199</span>
+  </span>
+</a>
+
+<script>
+  // ---------- Mobile nav drawer ----------
+  const navToggle = document.getElementById('navToggle');
+  const navClose = document.getElementById('navClose');
+  const drawer = document.getElementById('mobileDrawer');
+  const openDrawer = () => { drawer.classList.add('is-open'); navToggle.setAttribute('aria-expanded','true'); };
+  const closeDrawer = () => { drawer.classList.remove('is-open'); navToggle.setAttribute('aria-expanded','false'); };
+  navToggle?.addEventListener('click', openDrawer);
+  navClose?.addEventListener('click', closeDrawer);
+  drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  // ---------- Scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ---------- Multi-step booking form ----------
+  (function () {
+    const quiz = document.getElementById('bookingQuiz');
+    if (!quiz) return;
+
+    const steps = quiz.querySelectorAll('.quiz__step');
+    const progressFill = document.getElementById('bookProgressFill');
+    const progressLabel = document.getElementById('bookProgressLabel');
+    const totalSteps = 4;
+
+    function goToStep(stepKey) {
+      steps.forEach(s => s.classList.toggle('is-active', s.dataset.step === String(stepKey)));
+      if (stepKey !== 'result') {
+        const pct = (Number(stepKey) / totalSteps) * 100;
+        progressFill.style.width = pct + '%';
+        progressLabel.textContent = `Step ${stepKey} of ${totalSteps}`;
+      } else {
+        progressFill.style.width = '100%';
+        progressLabel.textContent = 'Complete';
+      }
+      quiz.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Option selection (single-select per group) + enable "Continue"
+    quiz.querySelectorAll('.quiz__options').forEach(group => {
+      const options = group.querySelectorAll('.quiz__option');
+      const stepEl = group.closest('.quiz__step');
+      const nextBtn = stepEl.querySelector('.quiz-next');
+      options.forEach(opt => {
+        opt.addEventListener('click', () => {
+          options.forEach(o => o.classList.remove('is-selected'));
+          opt.classList.add('is-selected');
+          if (nextBtn) nextBtn.disabled = false;
+        });
+      });
+    });
+
+    quiz.querySelectorAll('[data-next]').forEach(btn => {
+      btn.addEventListener('click', () => goToStep(btn.dataset.next));
+    });
+    quiz.querySelectorAll('[data-back]').forEach(btn => {
+      btn.addEventListener('click', () => goToStep(btn.dataset.back));
+    });
+
+    // Final submit — in production, POST this payload to the practice's
+    // CRM / lead-routing endpoint (e.g. Weave, Zocdoc, or a webhook into
+    // Dentrix / Open Dental) instead of just showing the result panel.
+    const submitBtn = document.getElementById('bookSubmit');
+    submitBtn?.addEventListener('click', () => {
+      const name = document.getElementById('bName').value.trim();
+      const phone = document.getElementById('bPhone').value.trim();
+      if (!name || !phone) {
+        if (!name) document.getElementById('bName').focus();
+        else document.getElementById('bPhone').focus();
+        return;
+      }
+      goToStep('result');
+    });
+  })();
+</script>
+</body>
+</html>

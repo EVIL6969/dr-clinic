@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental Financing &amp; Investment | CareCredit, Insurance &amp; Payment Plans — Lucerne Dental Atelier</title>
+<meta name="description" content="Transparent pricing, CareCredit and in-house financing, fixed-rate installment loans, and insurance coordination at Lucerne Dental Atelier. Estimate your monthly payment.">
+
+<!-- ===================================================================
+     LOCAL SEO CUSTOMIZATION ZONE
+     Swap business name, NAP, and review counts to match the deployed
+     clinic. Breadcrumb schema below ties this page back to the
+     homepage's LocalBusiness entity for richer sitelinks.
+     =================================================================== -->
+<link rel="canonical" href="https://www.lucernedentalatelier.com/financing.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dental Financing &amp; Investment — Lucerne Dental Atelier">
+<meta property="og:description" content="Transparent pricing, flexible financing, and insurance coordination — explained clearly, with a live payment estimate.">
+<meta property="og:image" content="https://picsum.photos/seed/lucerne-financing-og-share/1200/630">
+<meta property="og:url" content="https://www.lucernedentalatelier.com/financing.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.lucernedentalatelier.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Investment & Financing", "item": "https://www.lucernedentalatelier.com/financing.html" }
+  ]
+}
+</script>
+<!-- END LOCAL SEO CUSTOMIZATION ZONE -->
+
+<link rel="stylesheet" href="style.css">
+<style>
+/* -------------------------------------------------------------
+   PAGE-SPECIFIC: INVESTMENT & FINANCING
+   Built on top of the shared token system in style.css — every
+   color, font, radius, and spacing value below references the
+   same custom properties used sitewide.
+------------------------------------------------------------- */
+
+.main-nav__links a[aria-current="page"] { color: var(--ink); }
+.main-nav__links a[aria-current="page"]::after { right: 0; }
+
+.page-hero h1 { color: var(--porcelain); font-size: var(--fs-h1); max-width: 18ch; }
+.page-hero p.hero__sub { color: rgba(238,238,231,0.78); }
+.page-hero .hero__trust-item .stat-number { color: var(--porcelain); }
+.page-hero .hero__trust-item span { color: rgba(238,238,231,0.65); }
+
+/* Pricing philosophy two-column */
+.pricing-row {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: clamp(2rem, 1rem + 4vw, 5rem);
+  align-items: center;
+}
+.pricing-row p:not(:last-child) { margin-bottom: var(--space-sm); }
+
+.estimate-card {
+  background: var(--porcelain-flat);
+  border-radius: var(--radius-card);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-soft);
+}
+.estimate-card__head { margin-bottom: var(--space-sm); }
+.estimate-card__head h3 { font-size: 1.1rem; margin-top: 0.3rem; }
+.estimate-card__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--ink-line);
+  font-size: 0.94rem;
+}
+.estimate-card__row span:last-child { font-family: var(--font-mono); color: var(--ink); white-space: nowrap; }
+.estimate-card__row--total { border-bottom: none; padding-top: 1rem; font-weight: 700; }
+.estimate-card__row--total span:last-child { font-size: 1.25rem; color: var(--gold-deep); }
+.estimate-card__fine { font-size: 0.8rem; color: var(--ink-soft); margin-top: var(--space-sm); }
+
+/* Financing option cards (built on .service-card, no media) */
+.service-card--finance { padding-top: var(--space-md); }
+.service-card--finance .pillar__icon { margin-bottom: var(--space-sm); }
+
+/* Payment calculator */
+.calculator {
+  background: var(--porcelain-flat);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 1rem + 3vw, 4rem);
+  align-items: center;
+}
+.calculator__field { margin-bottom: var(--space-md); }
+.calculator__field:last-child { margin-bottom: 0; }
+.calculator__field > label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--ink); margin-bottom: 0.7rem; }
+
+.calculator__value { margin-bottom: 0.6rem; }
+.calculator__value .stat-number { font-size: 1.6rem; color: var(--ink); }
+
+.calculator input[type="range"] {
+  width: 100%;
+  accent-color: var(--gold-deep);
+  height: 6px;
+}
+.calculator__range-labels { display: flex; justify-content: space-between; font-size: 0.76rem; color: var(--ink-soft); margin-top: 0.4rem; font-family: var(--font-mono); }
+
+.calculator__pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.calculator__pill {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.6em 1.1em;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--ink-line-strong);
+  background: var(--white);
+  color: var(--ink-soft);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.calculator__pill:hover { border-color: var(--sage); }
+.calculator__pill.is-active { background: var(--ink); color: var(--porcelain); border-color: var(--ink); }
+
+.calculator__result { text-align: center; border-left: 1px solid var(--ink-line); padding-left: clamp(1.5rem, 1rem + 2vw, 3rem); }
+.calculator__amount { display: flex; align-items: baseline; justify-content: center; gap: 0.4em; margin: 0.6rem 0 var(--space-sm); }
+.calculator__amount .stat-number { font-size: 2.6rem; color: var(--ink); }
+.calculator__amount span:last-child { font-size: 0.95rem; color: var(--ink-soft); }
+.calculator__fine { font-size: 0.78rem; color: var(--ink-soft); margin: 0 auto var(--space-md); max-width: 30ch; }
+
+/* Insurance checklist (reuses .assessment__copy pattern) */
+.insurance-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2rem, 1rem + 4vw, 5rem);
+  align-items: start;
+}
+
+/* FAQ accordion */
+.faq-list { display: flex; flex-direction: column; gap: 0.9rem; max-width: 800px; }
+.faq-item {
+  background: var(--porcelain-flat);
+  border-radius: 16px;
+  padding-inline: var(--space-md);
+  box-shadow: var(--shadow-card);
+}
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding-block: 1.2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--gold-deep);
+  transition: transform 0.3s var(--ease-smile);
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { padding-bottom: 1.2rem; margin: 0; color: var(--ink-soft); font-size: 0.96rem; }
+
+@media (max-width: 1024px) {
+  .pricing-row,
+  .insurance-row { grid-template-columns: 1fr; }
+  .calculator { grid-template-columns: 1fr; }
+  .calculator__result { border-left: none; border-top: 1px solid var(--ink-line); padding-left: 0; padding-top: var(--space-lg); }
+}
+@media (max-width: 768px) {
+  .calculator { padding: 1.75rem; border-radius: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============== ANNOUNCEMENT BAR ============== -->
+<div class="announce-bar">
+  New patients: complimentary digital smile preview with any consultation booked this month — <a href="index.html#assessment">take the 60-second assessment</a>
+</div>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+
+    <nav class="main-nav">
+      <ul class="main-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Before & After</a></li>
+        <li><a href="financing.html">Financing</a></li>
+        <li><a href="contact.html">Book Now</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      <a href="tel:+14245550199" class="header-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+        <span class="label-text">(424) 555-0199</span>
+      </a>
+      <a href="index.html#book" class="btn btn--primary">Book Consultation</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer__top">
+    <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+    <button class="nav-toggle" aria-label="Close menu" id="navClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="index.html#top">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="financing.html">Financing</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="index.html#contact">Visit Us</a>
+  </nav>
+  <div class="mobile-drawer__footer">
+    <a href="tel:+14245550199" class="btn btn--outline btn--block">Call (424) 555-0199</a>
+    <a href="index.html#book" class="btn btn--primary btn--block">Book Consultation</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ============== PAGE HERO ============== -->
+  <section class="section page-hero section--ink smile-cut">
+    <div class="container">
+      <div>
+        <span class="eyebrow on-dark">Investment &amp; financing</span>
+        <h1>A transformative smile shouldn't hinge on having $30,000 in savings.</h1>
+        <p class="hero__sub">Cost should never be the reason someone keeps avoiding the dentist. Here's exactly what things cost, how financing actually works, and how we help you use insurance benefits you're probably under-using.</p>
+
+        <div class="hero__actions">
+          <a href="#calculator" class="btn btn--gold btn--lg">Estimate My Monthly Payment</a>
+          <a href="tel:+14245550199" class="btn btn--outline on-dark btn--lg">Talk to a Treatment Coordinator</a>
+        </div>
+
+        <div class="hero__trust">
+          <div class="hero__trust-item">
+            <span class="stat-number">0%</span>
+            <span>APR promotional plans available*</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="stat-number">$89+</span>
+            <span>Typical monthly payment on a veneer plan</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="stat-number">100%</span>
+            <span>Of treatment plans itemized in writing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TRANSPARENT PRICING PHILOSOPHY ============== -->
+  <section class="section">
+    <div class="container">
+      <div class="pricing-row">
+        <div>
+          <span class="eyebrow">How we price things</span>
+          <h2 style="margin-bottom: var(--space-md);">You'll see every number before you agree to anything.</h2>
+          <p class="wide">Most dental anxiety isn't really about the drill — it's about not knowing what something will cost until the bill shows up. We don't work that way. Every treatment plan is itemized, dated, and handed to you in writing during your consultation, before any work is ever scheduled. Nothing gets added later that wasn't already on that page.</p>
+          <p class="wide">If your plan changes mid-treatment — say, a tooth needs something extra once we're already in there — we stop, explain why, and get your approval and a new written number before continuing. You'll never wake up from a procedure to a bill that doesn't match what you agreed to.</p>
+        </div>
+
+        <div class="estimate-card reveal">
+          <div class="estimate-card__head">
+            <span class="eyebrow">Illustrative example</span>
+            <h3>Sample Treatment Plan — Full-Mouth Implant Case</h3>
+          </div>
+          <div class="estimate-card__row"><span>Implant placement (×4)</span><span>$11,800</span></div>
+          <div class="estimate-card__row"><span>Implant-supported bridge</span><span>$9,400</span></div>
+          <div class="estimate-card__row"><span>3D imaging &amp; surgical guide</span><span>$650</span></div>
+          <div class="estimate-card__row"><span>IV sedation</span><span>$900</span></div>
+          <div class="estimate-card__row estimate-card__row--total"><span>Total investment</span><span>$22,750</span></div>
+          <p class="estimate-card__fine">Final pricing is always based on your own scan and treatment plan — this is a representative example only, not a quote.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FINANCING OPTIONS ============== -->
+  <section class="section section--deep smile-cut">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Your options</span>
+        <h2>Four ways to spread out the investment.</h2>
+        <p class="wide">Most patients combine more than one of these. Your treatment coordinator will walk through which mix makes sense for your plan.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="service-card service-card--finance reveal">
+          <div class="pillar__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          </div>
+          <span class="service-card__price">0% interest for 6–24 months*</span>
+          <h3>CareCredit® Healthcare Financing</h3>
+          <p>America's most widely accepted healthcare credit card. Apply in under 60 seconds with no obligation to use it, and get an instant decision in most cases.</p>
+          <a href="#calculator" class="service-card__link">Check My Rate
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card service-card--finance reveal">
+          <div class="pillar__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <span class="service-card__price">Plans starting around $89/month*</span>
+          <h3>In-House Payment Plans</h3>
+          <p>Your treatment coordinator builds a custom monthly plan around your actual budget — not a generic tier. Many patients pair a smaller deposit with manageable payments directly to our office.</p>
+          <a href="tel:+14245550199" class="service-card__link">Ask About In-House Plans
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card service-card--finance reveal">
+          <div class="pillar__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </div>
+          <span class="service-card__price">Terms from 24–60 months</span>
+          <h3>Fixed-Rate Installment Loans</h3>
+          <p>For larger treatment plans, our lending partners offer fixed-rate installment loans with predictable monthly payments — no balloon payment waiting at the end of your term.</p>
+          <a href="#calculator" class="service-card__link">See Loan Estimates
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card service-card--finance reveal">
+          <div class="pillar__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l8-8 9 9-8 8a2 2 0 0 1-3 0L3 15a2 2 0 0 1 0-3Z"/><circle cx="15" cy="9" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <span class="service-card__price">Use pre-tax dollars</span>
+          <h3>HSA &amp; FSA Accepted</h3>
+          <p>Most cosmetic and all medically-necessary procedures, including implants and full-mouth reconstruction, qualify for HSA and FSA reimbursement. We provide the documentation your plan administrator needs.</p>
+          <a href="tel:+14245550199" class="service-card__link">Learn What Qualifies
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PAYMENT CALCULATOR ============== -->
+  <section class="section" id="calculator">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">See it in real numbers</span>
+        <h2>What would your monthly payment actually look like?</h2>
+        <p class="wide" style="margin-inline:auto;">Move the slider to roughly match your treatment cost, pick a term, and see an estimate. This isn't a quote — it's a starting point for the conversation with your treatment coordinator.</p>
+      </div>
+
+      <div class="calculator reveal">
+        <div class="calculator__inputs">
+          <div class="calculator__field">
+            <label for="calcCost">Estimated treatment cost</label>
+            <div class="calculator__value"><span class="stat-number" id="calcCostValue">$8,500</span></div>
+            <input type="range" id="calcCost" min="1500" max="45000" step="250" value="8500" aria-describedby="calcCostValue">
+            <div class="calculator__range-labels"><span>$1,500</span><span>$45,000</span></div>
+          </div>
+
+          <div class="calculator__field">
+            <label>Repayment term</label>
+            <div class="calculator__pills" id="calcTermPills">
+              <button class="calculator__pill" type="button" data-term="6">6 mo</button>
+              <button class="calculator__pill is-active" type="button" data-term="12">12 mo</button>
+              <button class="calculator__pill" type="button" data-term="24">24 mo</button>
+              <button class="calculator__pill" type="button" data-term="36">36 mo</button>
+              <button class="calculator__pill" type="button" data-term="60">60 mo</button>
+            </div>
+          </div>
+
+          <div class="calculator__field">
+            <label>Financing type</label>
+            <div class="calculator__pills" id="calcAprPills">
+              <button class="calculator__pill is-active" type="button" data-apr="0">0% Promo APR*</button>
+              <button class="calculator__pill" type="button" data-apr="15.9">Standard 15.9% APR</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="calculator__result">
+          <span class="eyebrow" style="justify-content:center;">Estimated monthly payment</span>
+          <div class="calculator__amount">
+            <span class="stat-number" id="calcMonthly">$708</span>
+            <span>/ month</span>
+          </div>
+          <p class="calculator__fine">Estimate only — not a credit offer. Final terms, rate, and approval are determined by CareCredit or our financing partner after a credit check. *0% promotional APR available on qualifying plans for approved applicants.</p>
+          <a href="index.html#book" class="btn btn--primary btn--block">Talk to a Treatment Coordinator</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== INSURANCE COORDINATION ============== -->
+  <section class="section section--ink" id="insurance">
+    <div class="container">
+      <div class="insurance-row">
+        <div>
+          <span class="eyebrow on-dark">Insurance coordination</span>
+          <h2 style="color:var(--porcelain); margin-bottom: var(--space-md);">We speak insurance so you don't have to.</h2>
+          <p class="wide" style="color:rgba(238,238,231,0.78);">Dental insurance is notoriously confusing, and most plans only cover a fraction of cosmetic or implant work anyway. Rather than leaving you to decode an Explanation of Benefits on your own, our team handles the entire process — so you know your real out-of-pocket number before treatment ever starts.</p>
+        </div>
+
+        <div class="assessment__copy">
+          <ul>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              <span style="color:rgba(238,238,231,0.9);">We verify your benefits before your first appointment, not after.</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              <span style="color:rgba(238,238,231,0.9);">Our team files every claim directly with your insurer on your behalf.</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              <span style="color:rgba(238,238,231,0.9);">If you're out-of-network, we help you maximize reimbursement instead of assuming you have none.</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              <span style="color:rgba(238,238,231,0.9);">You'll know your estimated out-of-pocket portion before treatment starts — not after a confusing EOB arrives.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FAQ ============== -->
+  <section class="section section--flat">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Common financing questions</span>
+        <h2>The questions everyone's a little embarrassed to ask out loud.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Will applying for financing hurt my credit score?</summary>
+          <p>Most pre-qualification checks, including CareCredit's, use a soft inquiry that doesn't affect your score. A hard inquiry only happens if you move forward with a full application, and we'll always tell you which type a lender is running before you apply.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What if I've been denied financing somewhere else before?</summary>
+          <p>Different lenders use different approval criteria, and a denial from one doesn't predict the outcome with another. Our coordinators can usually identify which financing partner is the best fit for your situation before you formally apply.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use my dental insurance and financing together?</summary>
+          <p>Yes — most patients do. We apply your insurance benefit first, then finance only the remaining out-of-pocket balance, so you're never financing money your insurance was already going to cover.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is there a minimum credit score required?</summary>
+          <p>It depends on the lender and plan. CareCredit considers a range of factors beyond a single score, and our in-house plans are flexible because they're built around your specific budget rather than a fixed approval formula.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if I pay off my plan early?</summary>
+          <p>With CareCredit and our installment-loan partners, there's no prepayment penalty — paying early, or in full, only reduces the total interest you pay over the life of the loan.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you accept HSA or FSA cards directly at checkout?</summary>
+          <p>Yes. We run HSA and FSA cards exactly like a regular debit or credit card at the time of payment, and we'll provide an itemized receipt your plan administrator can use if documentation is ever requested.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CLOSING CTA ============== -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <svg class="cta-banner__arc" viewBox="0 0 600 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0,4 Q300,68 600,4" stroke-width="2"/></svg>
+        <h2>Let's find out what's actually possible within your budget.</h2>
+        <p>Bring your insurance card, ask every financing question on your mind, and leave with real numbers — not vague reassurances.</p>
+        <div class="cta-banner__actions">
+          <a href="index.html#book" class="btn btn--gold btn--lg">Book a Free Financial Consultation</a>
+          <a href="tel:+14245550199" class="btn btn--outline on-dark btn--lg">Call (424) 555-0199</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+        <p>Cosmetic and implant dentistry built around precision, comfort, and a patient experience that finally feels human.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-2a4 4 0 0 0-4 4v2H9v4h2v8h4v-8h2.5l.5-4H15V8Z"/></svg></a>
+          <a href="#" aria-label="Google Reviews"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 12h8.4a8 8 0 1 1-2.5-6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Before &amp; After Gallery</a></li>
+          <li><a href="index.html#services">Smile Design</a></li>
+          <li><a href="index.html#technology">Technology</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#services">Dental Implants</a></li>
+          <li><a href="index.html#services">Porcelain Veneers</a></li>
+          <li><a href="index.html#services">Smile Makeovers</a></li>
+          <li><a href="financing.html">Financing &amp; Insurance</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <address>
+          <div>412 Camden Drive, Suite 310<br>Beverly Hills, CA 90210</div>
+          <div><a href="tel:+14245550199">(424) 555-0199</a></div>
+          <div><a href="mailto:hello@lucernedentalatelier.com">hello@lucernedentalatelier.com</a></div>
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Lucerne Dental Atelier. All rights reserved.</span>
+      <div class="flex gap-sm">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Notice of Privacy Practices</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== STICKY EMERGENCY CARE ELEMENT ============== -->
+<a href="tel:+14245550199" class="emergency-bar" aria-label="Call now for dental emergency care">
+  <span class="emergency-bar__pulse"></span>
+  <span>
+    Dental Emergency? We See You Today
+    <span class="emergency-bar__sub">(424) 555-0199</span>
+  </span>
+</a>
+
+<script>
+  // ---------- Mobile nav drawer ----------
+  const navToggle = document.getElementById('navToggle');
+  const navClose = document.getElementById('navClose');
+  const drawer = document.getElementById('mobileDrawer');
+  const openDrawer = () => { drawer.classList.add('is-open'); navToggle.setAttribute('aria-expanded','true'); };
+  const closeDrawer = () => { drawer.classList.remove('is-open'); navToggle.setAttribute('aria-expanded','false'); };
+  navToggle?.addEventListener('click', openDrawer);
+  navClose?.addEventListener('click', closeDrawer);
+  drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  // ---------- Scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ---------- Monthly payment calculator ----------
+  (function () {
+    const costInput = document.getElementById('calcCost');
+    const costValue = document.getElementById('calcCostValue');
+    const termPills = document.querySelectorAll('#calcTermPills .calculator__pill');
+    const aprPills = document.querySelectorAll('#calcAprPills .calculator__pill');
+    const monthlyOut = document.getElementById('calcMonthly');
+    if (!costInput) return;
+
+    const currency = (n) => '$' + Math.round(n).toLocaleString('en-US');
+
+    function getTerm() {
+      const active = document.querySelector('#calcTermPills .calculator__pill.is-active');
+      return Number(active ? active.dataset.term : 12);
+    }
+    function getApr() {
+      const active = document.querySelector('#calcAprPills .calculator__pill.is-active');
+      return Number(active ? active.dataset.apr : 0);
+    }
+
+    function recalc() {
+      const cost = Number(costInput.value);
+      const term = getTerm();
+      const apr = getApr();
+      let monthly;
+      if (apr <= 0) {
+        monthly = cost / term;
+      } else {
+        const r = apr / 100 / 12;
+        monthly = (cost * r) / (1 - Math.pow(1 + r, -term));
+      }
+      costValue.textContent = currency(cost);
+      monthlyOut.textContent = currency(monthly);
+    }
+
+    costInput.addEventListener('input', recalc);
+    termPills.forEach(pill => pill.addEventListener('click', () => {
+      termPills.forEach(p => p.classList.remove('is-active'));
+      pill.classList.add('is-active');
+      recalc();
+    }));
+    aprPills.forEach(pill => pill.addEventListener('click', () => {
+      aprPills.forEach(p => p.classList.remove('is-active'));
+      pill.classList.add('is-active');
+      recalc();
+    }));
+
+    recalc();
+  })();
+</script>
+</body>
+</html>

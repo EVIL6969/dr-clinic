@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental Implants &amp; Porcelain Veneers | Advanced Cosmetic Dentistry — Lucerne Dental Atelier</title>
+<meta name="description" content="Explore dental implants, full-mouth reconstruction, and porcelain veneers at Lucerne Dental Atelier — digitally planned, hand-finished, and built to last. See pricing, process, and what's included.">
+
+<!-- ===================================================================
+     LOCAL SEO CUSTOMIZATION ZONE
+     Swap business name, NAP, and review counts to match the deployed
+     clinic. Service + Breadcrumb schema below ties this page back to
+     the homepage's LocalBusiness entity for richer sitelinks and
+     service-specific rich results.
+     =================================================================== -->
+<link rel="canonical" href="https://www.lucernedentalatelier.com/services.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dental Implants &amp; Porcelain Veneers — Lucerne Dental Atelier">
+<meta property="og:description" content="Digitally planned implants and hand-layered porcelain veneers — see exactly what's included, what it costs, and how the process works.">
+<meta property="og:image" content="https://picsum.photos/seed/lucerne-services-og-share/1200/630">
+<meta property="og:url" content="https://www.lucernedentalatelier.com/services.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.lucernedentalatelier.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Advanced Services", "item": "https://www.lucernedentalatelier.com/services.html" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Dental Implants & Full-Mouth Reconstruction",
+      "serviceType": "Dental Implants",
+      "provider": { "@type": "Dentist", "name": "Lucerne Dental Atelier" },
+      "areaServed": "Beverly Hills, CA",
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "2950", "description": "Starting price per single-tooth implant, crown to root" }
+    },
+    {
+      "@type": "Service",
+      "name": "Porcelain Veneers & Smile Design",
+      "serviceType": "Porcelain Veneers",
+      "provider": { "@type": "Dentist", "name": "Lucerne Dental Atelier" },
+      "areaServed": "Beverly Hills, CA",
+      "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "1450", "description": "Starting price per porcelain veneer" }
+    }
+  ]
+}
+</script>
+<!-- END LOCAL SEO CUSTOMIZATION ZONE -->
+
+<link rel="stylesheet" href="style.css">
+<style>
+/* -------------------------------------------------------------
+   PAGE-SPECIFIC: ADVANCED SERVICES (IMPLANTS & VENEERS)
+   Built on top of the shared token system in style.css — every
+   color, font, radius, and spacing value below references the
+   same custom properties used sitewide.
+------------------------------------------------------------- */
+
+.main-nav__links a[aria-current="page"] { color: var(--ink); }
+.main-nav__links a[aria-current="page"]::after { right: 0; }
+
+.page-hero h1 { color: var(--porcelain); font-size: var(--fs-h1); max-width: 19ch; }
+.page-hero p.hero__sub { color: rgba(238,238,231,0.78); }
+.page-hero .hero__trust-item .stat-number { color: var(--porcelain); }
+.page-hero .hero__trust-item span { color: rgba(238,238,231,0.65); }
+
+/* Quick-jump service tabs under hero */
+.service-tabs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-block: var(--space-md);
+}
+.service-tab {
+  flex: 1 1 280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--porcelain-flat);
+  border: 1.5px solid var(--ink-line);
+  border-radius: var(--radius-card);
+  padding: 1.1rem 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.3s ease, transform 0.3s var(--ease-smile);
+}
+.service-tab:hover { border-color: var(--gold); transform: translateY(-3px); }
+.service-tab span:first-child { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; color: var(--sage-deep); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+.service-tab strong { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--ink); }
+.service-tab svg { flex-shrink: 0; color: var(--gold-deep); }
+
+/* Value justification two-column (reused across both service groups) */
+.pricing-row {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: clamp(2rem, 1rem + 4vw, 5rem);
+  align-items: center;
+}
+.pricing-row p:not(:last-child) { margin-bottom: var(--space-sm); }
+
+.estimate-card {
+  background: var(--porcelain-flat);
+  border-radius: var(--radius-card);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-soft);
+}
+.section--deep .estimate-card,
+.section--ink .estimate-card { background: var(--white); }
+.estimate-card__head { margin-bottom: var(--space-sm); }
+.estimate-card__head h3 { font-size: 1.1rem; margin-top: 0.3rem; }
+.estimate-card__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--ink-line);
+  font-size: 0.94rem;
+}
+.estimate-card__row span:last-child { font-family: var(--font-mono); color: var(--ink); white-space: nowrap; }
+.estimate-card__row--total { border-bottom: none; padding-top: 1rem; font-weight: 700; }
+.estimate-card__row--total span:last-child { font-size: 1.25rem; color: var(--gold-deep); }
+.estimate-card__fine { font-size: 0.8rem; color: var(--ink-soft); margin-top: var(--space-sm); }
+.estimate-card__list { margin-top: var(--space-sm); display: flex; flex-direction: column; gap: 0.6rem; }
+.estimate-card__list li { display: flex; align-items: flex-start; gap: 0.6em; font-size: 0.88rem; color: var(--ink-soft); }
+.estimate-card__list svg { flex-shrink: 0; margin-top: 2px; color: var(--sage-deep); }
+
+/* Procedure / material tabs */
+.proc-tabs { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: var(--space-lg); }
+.proc-tab {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.75em 1.5em;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--ink-line-strong);
+  background: var(--white);
+  color: var(--ink-soft);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.section--deep .proc-tab { background: var(--porcelain-flat); }
+.proc-tab:hover { border-color: var(--sage); color: var(--ink); }
+.proc-tab.is-active { background: var(--ink); color: var(--porcelain); border-color: var(--ink); }
+
+.proc-panel { display: none; }
+.proc-panel.is-active { display: grid; animation: quizIn 0.5s var(--ease-smile); }
+.proc-panel {
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 1rem + 3vw, 3.5rem);
+  align-items: center;
+}
+.proc-panel__media { border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); aspect-ratio: 4/3; }
+.proc-panel__media img { width: 100%; height: 100%; object-fit: cover; }
+.proc-panel__price { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.05em; color: var(--gold-deep); background: var(--gold-tint); padding: 0.4em 0.9em; border-radius: var(--radius-pill); display: inline-block; margin-bottom: var(--space-sm); }
+.proc-panel h3 { margin-bottom: 0.7rem; }
+.proc-panel p { margin-bottom: var(--space-sm); }
+.proc-panel ul { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: var(--space-sm); }
+.proc-panel li { display: flex; align-items: flex-start; gap: 0.6em; font-size: 0.92rem; color: var(--ink-soft); }
+.proc-panel li svg { flex-shrink: 0; margin-top: 3px; color: var(--sage-deep); }
+
+/* Vertical process timeline */
+.timeline { display: flex; flex-direction: column; gap: 0; max-width: 760px; margin-inline: auto; }
+.timeline-step { display: grid; grid-template-columns: 56px 1fr; gap: var(--space-md); padding-bottom: var(--space-lg); position: relative; }
+.timeline-step:last-child { padding-bottom: 0; }
+.timeline-step__num {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  z-index: 1;
+}
+.timeline-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 56px; bottom: -4px; left: 27px;
+  width: 1px;
+  background: rgba(238,238,231,0.25);
+}
+.timeline-step h3 { color: var(--porcelain); font-size: 1.2rem; margin-bottom: 0.4rem; }
+.timeline-step p { color: rgba(238,238,231,0.72); font-size: 0.95rem; margin: 0; }
+
+/* Comparison tables */
+.table-wrap { overflow-x: auto; margin-top: var(--space-md); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+.compare-table { width: 100%; border-collapse: collapse; min-width: 640px; background: var(--white); font-size: 0.92rem; }
+.section--ink .compare-table { background: var(--porcelain-flat); }
+.compare-table th, .compare-table td { padding: 1rem 1.4rem; text-align: left; border-bottom: 1px solid var(--ink-line); }
+.compare-table thead th { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sage-deep); background: var(--sage-tint); }
+.compare-table tbody th { font-weight: 700; color: var(--ink); white-space: nowrap; }
+.compare-table tbody tr:last-child td, .compare-table tbody tr:last-child th { border-bottom: none; }
+.compare-table td.is-best { color: var(--gold-deep); font-weight: 700; }
+
+/* FAQ accordion */
+.faq-list { display: flex; flex-direction: column; gap: 0.9rem; max-width: 800px; }
+.faq-item { background: var(--porcelain-flat); border-radius: 16px; padding-inline: var(--space-md); box-shadow: var(--shadow-card); }
+.faq-item summary { cursor: pointer; list-style: none; padding-block: 1.2rem; font-weight: 700; font-size: 1rem; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; flex-shrink: 0; font-family: var(--font-mono); font-size: 1.4rem; line-height: 1; color: var(--gold-deep); transition: transform 0.3s var(--ease-smile); }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { padding-bottom: 1.2rem; margin: 0; color: var(--ink-soft); font-size: 0.96rem; }
+
+@media (max-width: 1024px) {
+  .pricing-row { grid-template-columns: 1fr; }
+  .proc-panel { grid-template-columns: 1fr; }
+  .proc-panel__media { order: -1; max-width: 480px; }
+}
+@media (max-width: 768px) {
+  .page-hero h1 { max-width: none; }
+  .service-tabs { flex-direction: column; }
+  .proc-tabs { gap: 0.5rem; }
+  .proc-tab { font-size: 0.84rem; padding: 0.6em 1.1em; }
+  .timeline-step { grid-template-columns: 44px 1fr; gap: var(--space-sm); }
+  .timeline-step__num { width: 44px; height: 44px; font-size: 1.1rem; }
+  .timeline-step:not(:last-child)::before { left: 21px; top: 44px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============== ANNOUNCEMENT BAR ============== -->
+<div class="announce-bar">
+  New patients: complimentary digital smile preview with any consultation booked this month — <a href="index.html#assessment">take the 60-second assessment</a>
+</div>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+
+    <nav class="main-nav">
+      <ul class="main-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" aria-current="page">Services</a></li>
+        <li><a href="gallery.html">Before & After</a></li>
+        <li><a href="financing.html">Financing</a></li>
+        <li><a href="contact.html">Book Now</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      <a href="tel:+14245550199" class="header-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+        <span class="label-text">(424) 555-0199</span>
+      </a>
+      <a href="contact.html#book" class="btn btn--primary">Book Consultation</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer__top">
+    <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+    <button class="nav-toggle" aria-label="Close menu" id="navClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Before & After</a>
+    <a href="financing.html">Financing</a>
+    <a href="contact.html">Book Now</a>
+  </nav>
+  <div class="mobile-drawer__footer">
+    <a href="tel:+14245550199" class="btn btn--outline btn--block">Call (424) 555-0199</a>
+    <a href="contact.html#book" class="btn btn--primary btn--block">Book Consultation</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ============== PAGE HERO ============== -->
+  <section class="section page-hero section--ink smile-cut">
+    <div class="container">
+      <div>
+        <span class="eyebrow on-dark">Advanced treatments, explained in full</span>
+        <h1>Two procedures people save years for. Here's exactly what you're paying for.</h1>
+        <p class="hero__sub">Dental implants and porcelain veneers are significant investments — and you deserve more than a price list. Below is the materials, the technology, the artistry, and the process behind both, so you can decide with real information instead of guesswork.</p>
+
+        <div class="hero__actions">
+          <a href="#implants" class="btn btn--gold btn--lg">Explore Dental Implants</a>
+          <a href="#veneers" class="btn btn--outline on-dark btn--lg">Explore Porcelain Veneers</a>
+        </div>
+
+        <div class="hero__trust">
+          <div class="hero__trust-item">
+            <span class="stat-number">25+ yrs</span>
+            <span>Average implant lifespan with proper care</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="stat-number">15–20 yrs</span>
+            <span>Typical porcelain veneer lifespan</span>
+          </div>
+          <div class="hero__trust-item">
+            <span class="stat-number">100%</span>
+            <span>Of treatment plans itemized in writing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== QUICK-JUMP SERVICE TABS ============== -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="service-tabs">
+        <a href="#implants" class="service-tab">
+          <div>
+            <span>From $2,950 per implant</span>
+            <strong>Dental Implants &amp; Full-Mouth Reconstruction</strong>
+          </div>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#veneers" class="service-tab">
+          <div>
+            <span>From $1,450 per veneer</span>
+            <strong>Porcelain Veneers &amp; Smile Design</strong>
+          </div>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       SECTION GROUP: DENTAL IMPLANTS & FULL-MOUTH RECONSTRUCTION
+       ====================================================================== -->
+
+  <!-- ============== IMPLANTS: VALUE JUSTIFICATION ============== -->
+  <section class="section section--deep smile-cut" id="implants">
+    <div class="container">
+      <div class="pricing-row">
+        <div>
+          <span class="eyebrow">Dental implants &amp; full-mouth reconstruction</span>
+          <h2 style="margin-bottom: var(--space-md);">The closest thing to growing your tooth back.</h2>
+          <p class="wide">A dental implant isn't something you replace in a decade — it's a titanium root, fused directly to your jawbone, engineered to function for the rest of your life. That permanence is exactly why the investment looks different from a bridge or a denture: you're not paying for a temporary fix you'll redo every five to ten years. You're paying once for a foundation that doesn't need to be relined, replaced, or revisited.</p>
+          <p class="wide">It's also why the cheapest implant quote you find isn't necessarily the best value. Lower-cost providers often skip the 3D surgical guide, use generic off-brand fixtures instead of medical-grade titanium, or hand off your case to whoever's in the chair that day. Every fee at Lucerne Dental Atelier includes the planning, materials, and continuity of care that determine whether your implant lasts five years or fifty.</p>
+        </div>
+
+        <div class="estimate-card reveal">
+          <div class="estimate-card__head">
+            <span class="eyebrow">Sample investment</span>
+            <h3>Single Implant, Crown to Root</h3>
+          </div>
+          <div class="estimate-card__row"><span>Medical-grade titanium implant fixture</span><span>$1,450</span></div>
+          <div class="estimate-card__row"><span>Custom-milled abutment</span><span>$450</span></div>
+          <div class="estimate-card__row"><span>All-ceramic crown, shade-matched</span><span>$1,050</span></div>
+          <div class="estimate-card__row estimate-card__row--total"><span>Total investment</span><span>$2,950</span></div>
+          <ul class="estimate-card__list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>3D-guided surgical placement, no exploratory guesswork</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Lifetime warranty on the implant fixture itself</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>All post-op check-ins included through full healing</li>
+          </ul>
+          <p class="estimate-card__fine">Final pricing depends on your own scan and treatment plan — this is a representative example, not a quote. See <a href="financing.html" style="color:var(--gold-deep); border-bottom:1px solid var(--gold-deep);">financing options</a> for monthly payment estimates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== IMPLANTS: SUB-PROCEDURE TABS ============== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Which one fits your situation?</span>
+        <h2>From one missing tooth to a complete new bite.</h2>
+        <p class="wide">Every case is different, and your treatment coordinator will recommend the right path during your consultation. Here's what each option actually involves.</p>
+      </div>
+
+      <div class="proc-tabs" role="tablist" aria-label="Implant procedure types">
+        <button class="proc-tab is-active" type="button" role="tab" aria-selected="true" data-target="single">Single-Tooth Implant</button>
+        <button class="proc-tab" type="button" role="tab" aria-selected="false" data-target="bridge">Implant-Supported Bridge</button>
+        <button class="proc-tab" type="button" role="tab" aria-selected="false" data-target="allon4">All-on-4 Full Arch</button>
+        <button class="proc-tab" type="button" role="tab" aria-selected="false" data-target="fullmouth">Full-Mouth Reconstruction</button>
+      </div>
+
+      <div class="proc-panels">
+        <div class="proc-panel is-active" data-panel="single">
+          <div class="proc-panel__media">
+            <img src="https://picsum.photos/seed/lucerne-implant-single/700/525" alt="Single dental implant model showing titanium fixture, abutment, and ceramic crown">
+          </div>
+          <div>
+            <span class="proc-panel__price">From $2,950</span>
+            <h3>Single-Tooth Implant</h3>
+            <p>Replaces one missing tooth without grinding down the healthy teeth on either side, the way a traditional bridge requires. The implant stands entirely on its own, preserving the bone and structure around it.</p>
+            <ul>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Neighboring teeth left completely untouched</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Single in-office surgical visit, typically under 60 minutes</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Final crown placed after 3–4 months of healing</li>
+            </ul>
+            <a href="contact.html#book" class="service-card__link">Discuss This Option
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="proc-panel" data-panel="bridge">
+          <div class="proc-panel__media">
+            <img src="https://picsum.photos/seed/lucerne-implant-bridge/700/525" alt="Implant-supported bridge model replacing three adjacent missing teeth">
+          </div>
+          <div>
+            <span class="proc-panel__price">From $7,200 (3-unit)</span>
+            <h3>Implant-Supported Bridge</h3>
+            <p>For two or more adjacent missing teeth, a bridge anchored by implants on either end replaces the entire span — without relying on your remaining natural teeth to carry the load, the way a traditional tooth-supported bridge does.</p>
+            <ul>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Just two implants can support up to three or four teeth</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Distributes bite force evenly across the span</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Cleans like natural teeth — no removable appliance</li>
+            </ul>
+            <a href="contact.html#book" class="service-card__link">Discuss This Option
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="proc-panel" data-panel="allon4">
+          <div class="proc-panel__media">
+            <img src="https://picsum.photos/seed/lucerne-implant-allon4/700/525" alt="All-on-4 full arch implant model showing four strategically angled implants supporting a fixed prosthesis">
+          </div>
+          <div>
+            <span class="proc-panel__price">From $24,500 per arch</span>
+            <h3>All-on-4 Full Arch</h3>
+            <p>A fixed, non-removable full arch of teeth supported by just four strategically angled implants — designed for patients who are missing most or all of their teeth in one arch and want a permanent solution, not a denture.</p>
+            <ul>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Many patients leave with a temporary full arch the same day</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Angled placement often avoids the need for bone grafting</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Fixed in place — never removed for cleaning or sleep</li>
+            </ul>
+            <a href="contact.html#book" class="service-card__link">Discuss This Option
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="proc-panel" data-panel="fullmouth">
+          <div class="proc-panel__media">
+            <img src="https://picsum.photos/seed/lucerne-implant-fullmouth/700/525" alt="Full-mouth reconstruction model showing implants placed across both upper and lower arches">
+          </div>
+          <div>
+            <span class="proc-panel__price">Custom quote, typically $45,000–$68,000</span>
+            <h3>Full-Mouth Reconstruction</h3>
+            <p>Combines implants across both the upper and lower arches — sometimes paired with bone grafting or sinus lift procedures — for patients rebuilding their entire bite from the ground up. Every case is sequenced and quoted individually.</p>
+            <ul>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>One doctor manages your entire case, start to finish</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Sequenced treatment plan with milestone check-ins</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Sedation options available for the full surgical phase</li>
+            </ul>
+            <a href="contact.html#book" class="service-card__link">Discuss This Option
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== IMPLANTS: PROCESS TIMELINE ============== -->
+  <section class="section section--ink smile-cut">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow on-dark">How it actually happens</span>
+        <h2 style="color:var(--porcelain);">Four stages, fully mapped before we begin.</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-step reveal">
+          <div class="timeline-step__num">1</div>
+          <div>
+            <h3>Consultation &amp; 3D-Guided Planning</h3>
+            <p>A cone beam CT scan maps your jawbone and nerve pathways in three dimensions, letting us plan exact implant position and angle on screen before any drilling — eliminating exploratory guesswork.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="timeline-step__num">2</div>
+          <div>
+            <h3>Guided Implant Placement</h3>
+            <p>Using a custom 3D-printed surgical guide built from your scan, the implant is placed exactly where it was planned. Sedation options are matched to your comfort level, not a one-size-fits-all default.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="timeline-step__num">3</div>
+          <div>
+            <h3>Healing &amp; Osseointegration</h3>
+            <p>Over roughly three to four months, the implant fuses directly with your jawbone. A temporary restoration keeps your smile complete while we monitor healing at regular check-ins.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="timeline-step__num">4</div>
+          <div>
+            <h3>Custom Final Restoration</h3>
+            <p>Your permanent crown, bridge, or full-arch prosthesis is fabricated, shade-matched, and bonded into place — then bite-checked and polished until it feels indistinguishable from a natural tooth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== IMPLANTS: COMPARISON + FAQ ============== -->
+  <section class="section section--flat">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why the upfront cost is different</span>
+        <h2>Implants vs. bridges vs. dentures, side by side.</h2>
+        <p class="wide">The cheapest option today isn't always the cheapest option over ten years. Here's how the three most common solutions actually compare.</p>
+      </div>
+
+      <div class="table-wrap reveal">
+        <table class="compare-table">
+          <thead>
+            <tr><th>Factor</th><th>Dental Implant</th><th>3-Unit Bridge</th><th>Full Denture</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Average lifespan</th><td class="is-best">25+ years, often a lifetime</td><td>10–15 years</td><td>5–8 years</td></tr>
+            <tr><th scope="row">Preserves jawbone</th><td class="is-best">Yes — stimulates bone like a natural root</td><td>No</td><td>No, accelerates bone loss</td></tr>
+            <tr><th scope="row">Neighboring teeth</th><td class="is-best">Untouched</td><td>Ground down to anchor the bridge</td><td>Not applicable</td></tr>
+            <tr><th scope="row">Daily care</th><td class="is-best">Brush and floss like a natural tooth</td><td>Brush, floss, plus cleaning under the pontic</td><td>Removed nightly, adhesive required</td></tr>
+            <tr><th scope="row">Long-term cost</th><td class="is-best">Higher upfront, no replacement cycle</td><td>Lower upfront, replaced every 10–15 yrs</td><td>Lowest upfront, relines and replacements every 5–7 yrs</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="faq-list" style="margin-top: var(--space-2xl);">
+        <details class="faq-item">
+          <summary>Am I actually a candidate for implants?</summary>
+          <p>Most patients are, even those who were told years ago they weren't. Adequate bone density is the main requirement, and if you've lost bone volume, a bone graft or sinus lift can often rebuild the foundation needed. Your 3D scan tells us definitively during your consultation.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How uncomfortable is the placement procedure?</summary>
+          <p>Most patients describe it as easier than they expected — comparable to a tooth extraction. With local anesthesia and, if you choose, sedation, discomfort during the procedure is minimal, and any post-op soreness is typically managed with over-the-counter medication for a few days.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does dental insurance cover implants?</summary>
+          <p>Coverage varies widely by plan — some cover a portion of the crown but not the surgical placement, others cover more. Our team verifies your specific benefits before treatment starts and combines insurance with financing to minimize your out-of-pocket cost. See our <a href="financing.html" style="color:var(--gold-deep); border-bottom:1px solid var(--gold-deep);">financing page</a> for details.</p>
+        </details>
+      </div>
+
+      <div class="cta-banner reveal" style="margin-top: var(--space-2xl);">
+        <svg class="cta-banner__arc" viewBox="0 0 600 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0,4 Q300,68 600,4" stroke-width="2"/></svg>
+        <h2>Ready to find out if you're a candidate?</h2>
+        <p>Your consultation includes a full exam, a 3D scan, and a written treatment plan — with zero pressure to decide anything that day.</p>
+        <div class="cta-banner__actions">
+          <a href="contact.html#book" class="btn btn--gold btn--lg">Book a Private Consultation</a>
+          <a href="financing.html" class="btn btn--outline on-dark btn--lg">See Financing Options</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       SECTION GROUP: PORCELAIN VENEERS & SMILE DESIGN
+       ====================================================================== -->
+
+  <!-- ============== VENEERS: VALUE JUSTIFICATION ============== -->
+  <section class="section" id="veneers">
+    <div class="container">
+      <div class="pricing-row">
+        <div>
+          <span class="eyebrow">Porcelain veneers &amp; smile design</span>
+          <h2 style="margin-bottom: var(--space-md);">Half a millimeter of porcelain, engineered to look like you were just born this way.</h2>
+          <p class="wide">A great veneer doesn't look like a veneer — it looks like an unusually good set of natural teeth. That illusion takes hand-layered porcelain, built tooth-by-tooth by a master ceramist who matches translucency, shape, and shade to your exact facial proportions. It's the difference between a smile that looks "done" and one that looks like yours, only finished.</p>
+          <p class="wide">Mass-produced veneers cut corners in ways that show: bulkier porcelain to save lab time, limited shade options, and shapes pulled from a generic mold rather than designed around your face. Every fee here covers the digital mock-up rounds, the diagnostic trial smile you can preview in your own mouth, and the ceramist relationship that makes the final result worth the investment.</p>
+        </div>
+
+        <div class="estimate-card reveal">
+          <div class="estimate-card__head">
+            <span class="eyebrow">Sample investment</span>
+            <h3>8-Veneer Smile Design</h3>
+          </div>
+          <div class="estimate-card__row"><span>Digital Smile Design &amp; diagnostic mockup</span><span>Included</span></div>
+          <div class="estimate-card__row"><span>Porcelain veneers (×8) at $1,450 each</span><span>$11,600</span></div>
+          <div class="estimate-card__row"><span>Custom shade matching &amp; ceramist fabrication</span><span>Included</span></div>
+          <div class="estimate-card__row estimate-card__row--total"><span>Total investment</span><span>$11,600</span></div>
+          <ul class="estimate-card__list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>You approve the digital design before fabrication begins</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Bonding, bite adjustment, and final polish included</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>One complimentary shade or shape refinement visit</li>
+          </ul>
+          <p class="estimate-card__fine">Veneer count and final pricing depend on your smile design — this is a representative example, not a quote. See <a href="financing.html" style="color:var(--gold-deep); border-bottom:1px solid var(--gold-deep);">financing options</a> for monthly payment estimates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== VENEERS: MATERIAL TABS ============== -->
+  <section class="section section--deep smile-cut">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Choosing the right material</span>
+        <h2>Three ways to get there, at three different price points.</h2>
+        <p class="wide">There's no universally "right" veneer material — only the right one for your teeth, timeline, and budget. We'll recommend a specific path during your digital smile design consultation.</p>
+      </div>
+
+      <div class="proc-tabs" role="tablist" aria-label="Veneer material types">
+        <button class="proc-tab is-active" type="button" role="tab" aria-selected="true" data-target="porcelain">Porcelain Veneers</button>
+        <button class="proc-tab" type="button" role="tab" aria-selected="false" data-target="composite">Composite Veneers</button>
+        <button class="proc-tab" type="button" role="tab" aria-selected="false" data-target="ultrathin">Ultra-Thin No-Prep</button>
+      </div>
+
+      <div class="proc-panels">
+        <div class="proc-panel is-active" data-panel="porcelain">
+          <div class="proc-panel__media">
+            <img src="https://picsum.photos/seed/lucerne-veneer-porcelain/700/525" alt="Close-up of hand-layered porcelain veneers showing natural translucency">
+          </div>
+          <div>
+            <span class="proc-panel__price">From $1,450 per tooth</span>
+            <h3>Porcelain Veneers</h3>
+            <p>Hand-layered, full-coverage porcelain that mimics the way light passes through real enamel. The gold standard for durability, stain resistance, and a result that holds up for fifteen to twenty years with normal care.</p>
+            <ul>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Best for: full smile transformations and long-term durability</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>15–20 year average lifespan with normal care</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Fully stain-resistant — coffee and red wine safe</li>
+            </ul>
+            <a href="contact.html#book" class="service-card__link">Discuss This Option
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="proc-panel" data-panel="composite">
+          <div class="proc-panel__media">
+            <img src="https://picsum.photos/seed/lucerne-veneer-composite/700/525" alt="Composite resin veneer being sculpted directly onto a tooth in a single visit">
+          </div>
+          <div>
+            <span class="proc-panel__price">From $650 per tooth</span>
+            <h3>Composite Veneers</h3>
+            <p>Sculpted directly onto your teeth from tooth-colored resin in a single visit. A budget-conscious option, or a low-commitment way to test a new shape before investing in porcelain.</p>
+            <ul>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Best for: budget-conscious patients or a trial run before porcelain</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Completed and polished in a single same-day visit</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>5–7 year lifespan, more prone to staining over time</li>
+            </ul>
+            <a href="contact.html#book" class="service-card__link">Discuss This Option
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="proc-panel" data-panel="ultrathin">
+          <div class="proc-panel__media">
+            <img src="https://picsum.photos/seed/lucerne-veneer-ultrathin/700/525" alt="Ultra-thin no-prep veneer held up to show its minimal thickness compared to a coin">
+          </div>
+          <div>
+            <span class="proc-panel__price">From $1,650 per tooth</span>
+            <h3>Ultra-Thin No-Prep Veneers</h3>
+            <p>Thinner than a contact lens and bonded with little to no removal of your natural enamel — meaning the change is largely reversible. Best suited to teeth that are already reasonably well-aligned and need a subtle shift in shade or shape.</p>
+            <ul>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Best for: subtle refinements on already well-aligned teeth</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Little to no enamel removal — largely reversible</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Specialized lab fabrication, slightly higher per-tooth cost</li>
+            </ul>
+            <a href="contact.html#book" class="service-card__link">Discuss This Option
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== VENEERS: PROCESS TIMELINE ============== -->
+  <section class="section section--ink smile-cut">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow on-dark">From mockup to mirror</span>
+        <h2 style="color:var(--porcelain);">Five stages, and you approve the design before anything's permanent.</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-step reveal">
+          <div class="timeline-step__num">1</div>
+          <div>
+            <h3>Digital Smile Design Preview</h3>
+            <p>Using photos and a 3D facial scan, we render your new smile directly onto your own face — shape, length, and brightness included — so you can see the outcome before a single tooth is touched.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="timeline-step__num">2</div>
+          <div>
+            <h3>Diagnostic Trial Smile</h3>
+            <p>A removable, temporary mockup of your approved design is placed over your existing teeth so you can wear it for a few days — testing how it feels, looks, and photographs before committing.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="timeline-step__num">3</div>
+          <div>
+            <h3>Minimal-Prep Tooth Preparation</h3>
+            <p>Once you've approved the trial smile, we prepare your teeth — removing only the minimal enamel necessary for the chosen veneer type — and capture a digital scan for the lab.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="timeline-step__num">4</div>
+          <div>
+            <h3>Hand-Layered Ceramist Fabrication</h3>
+            <p>Your veneers are hand-built by a master ceramist over roughly two to three weeks, layering porcelain to match the translucency and shade approved in your digital design.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal">
+          <div class="timeline-step__num">5</div>
+          <div>
+            <h3>Bonding &amp; Final Polish</h3>
+            <p>Each veneer is bonded individually, bite-checked, and hand-polished until the margins disappear and the result feels exactly like your own teeth — only exactly the way you pictured them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== VENEERS: COMPARISON + FAQ ============== -->
+  <section class="section section--flat">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Material, side by side</span>
+        <h2>Porcelain vs. composite vs. ultra-thin, compared.</h2>
+      </div>
+
+      <div class="table-wrap reveal">
+        <table class="compare-table">
+          <thead>
+            <tr><th>Factor</th><th>Porcelain</th><th>Composite</th><th>Ultra-Thin No-Prep</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Average lifespan</th><td class="is-best">15–20 years</td><td>5–7 years</td><td>10–15 years</td></tr>
+            <tr><th scope="row">Stain resistance</th><td class="is-best">Excellent</td><td>Moderate, can discolor over time</td><td class="is-best">Excellent</td></tr>
+            <tr><th scope="row">Tooth preparation required</th><td>Minimal</td><td>Minimal to none</td><td class="is-best">Little to none — largely reversible</td></tr>
+            <tr><th scope="row">Repairability</th><td>Requires full replacement if chipped</td><td class="is-best">Can often be touched up chairside</td><td>Requires full replacement if chipped</td></tr>
+            <tr><th scope="row">Typical cost per tooth</th><td>$1,450+</td><td class="is-best">From $650</td><td>$1,650+</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="faq-list" style="margin-top: var(--space-2xl);">
+        <details class="faq-item">
+          <summary>Will my teeth be sensitive after getting veneers?</summary>
+          <p>Mild, temporary sensitivity to hot or cold is common for the first few days as your teeth adjust, especially with porcelain veneers that require minimal enamel removal. It typically resolves on its own within a week and is rarely significant enough to need medication.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are veneers reversible?</summary>
+          <p>Ultra-thin no-prep veneers are largely reversible since little to no enamel is removed. Traditional porcelain veneers, which require minimal enamel reduction, are considered a permanent cosmetic choice — which is exactly why the diagnostic trial smile step exists, so you can preview the result before anything irreversible happens.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I keep my veneers looking new?</summary>
+          <p>Brush and floss exactly as you would with natural teeth, avoid using your teeth as tools (opening packages, biting nails), and wear a nightguard if you grind your teeth. With that routine, most porcelain veneers comfortably reach the high end of their fifteen-to-twenty-year lifespan.</p>
+        </details>
+      </div>
+
+      <div class="cta-banner reveal" style="margin-top: var(--space-2xl);">
+        <svg class="cta-banner__arc" viewBox="0 0 600 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0,4 Q300,68 600,4" stroke-width="2"/></svg>
+        <h2>Curious which option is right for your smile?</h2>
+        <p>Browse real results in our before-and-after gallery, or book a consultation to start your own digital smile design.</p>
+        <div class="cta-banner__actions">
+          <a href="contact.html#book" class="btn btn--gold btn--lg">Book a Private Consultation</a>
+          <a href="gallery.html" class="btn btn--outline on-dark btn--lg">See Before &amp; After Results</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html#top" class="brand">Lucerne<span>Dental Atelier</span></a>
+        <p>Cosmetic and implant dentistry built around precision, comfort, and a patient experience that finally feels human.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-2a4 4 0 0 0-4 4v2H9v4h2v8h4v-8h2.5l.5-4H15V8Z"/></svg></a>
+          <a href="#" aria-label="Google Reviews"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 12h8.4a8 8 0 1 1-2.5-6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Before &amp; After Gallery</a></li>
+          <li><a href="services.html#implants">Dental Implants</a></li>
+          <li><a href="services.html#veneers">Porcelain Veneers</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#implants">Dental Implants</a></li>
+          <li><a href="services.html#veneers">Porcelain Veneers</a></li>
+          <li><a href="index.html#services">Smile Makeovers</a></li>
+          <li><a href="financing.html">Financing &amp; Insurance</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <address>
+          <div>412 Camden Drive, Suite 310<br>Beverly Hills, CA 90210</div>
+          <div><a href="tel:+14245550199">(424) 555-0199</a></div>
+          <div><a href="mailto:hello@lucernedentalatelier.com">hello@lucernedentalatelier.com</a></div>
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Lucerne Dental Atelier. All rights reserved.</span>
+      <div class="flex gap-sm">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Notice of Privacy Practices</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== STICKY EMERGENCY CARE ELEMENT ============== -->
+<a href="tel:+14245550199" class="emergency-bar" aria-label="Call now for dental emergency care">
+  <span class="emergency-bar__pulse"></span>
+  <span>
+    Dental Emergency? We See You Today
+    <span class="emergency-bar__sub">(424) 555-0199</span>
+  </span>
+</a>
+
+<script>
+  // ---------- Mobile nav drawer ----------
+  const navToggle = document.getElementById('navToggle');
+  const navClose = document.getElementById('navClose');
+  const drawer = document.getElementById('mobileDrawer');
+  const openDrawer = () => { drawer.classList.add('is-open'); navToggle.setAttribute('aria-expanded','true'); };
+  const closeDrawer = () => { drawer.classList.remove('is-open'); navToggle.setAttribute('aria-expanded','false'); };
+  navToggle?.addEventListener('click', openDrawer);
+  navClose?.addEventListener('click', closeDrawer);
+  drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  // ---------- Scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ---------- Procedure / material tabs ----------
+  document.querySelectorAll('.proc-tabs').forEach(tabGroup => {
+    const tabs = tabGroup.querySelectorAll('.proc-tab');
+    const panelWrap = tabGroup.nextElementSibling;
+    const panels = panelWrap.querySelectorAll('.proc-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected','false'); });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected','true');
+        const target = tab.dataset.target;
+        panels.forEach(p => p.classList.toggle('is-active', p.dataset.panel === target));
+      });
+    });
+  });
+</script>
+</body>
+</html>
